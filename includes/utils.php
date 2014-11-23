@@ -40,3 +40,12 @@ function add_product_to_pedido($pedido_id,$product, $count){
         return false;
     return true;
 }
+
+function finalizar_pedido($pedido_id, $payment){
+    $qry = "UPDATE Pedido SET pedStatus = 'finalizado', pedPayMethod = '$payment'";
+    mysql_query($qry);
+    if(mysql_error())
+        return false;
+    return true;
+
+}
